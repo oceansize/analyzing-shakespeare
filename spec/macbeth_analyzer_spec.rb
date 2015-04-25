@@ -1,6 +1,6 @@
 require 'macbeth_analyzer'
 
-describe MacbethAnalyser do
+describe PlayAnalyser do
 
   it "can retrieve data from a url" do
 

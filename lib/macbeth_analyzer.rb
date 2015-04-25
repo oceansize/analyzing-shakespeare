@@ -1,13 +1,28 @@
 require 'net/http'
 require 'uri'
 
-uri = URI.parse('http://www.ibiblio.org')
-http = Net::HTTP.new(uri.host, uri.port)
+class PlayAnalyser
 
-request = Net::HTTP::Get.new('/xml/examples/shakespeare/macbeth.xml')
+  DOMAIN = 'http://www.ibiblio.org'
+  PATH_TO_RESOURCE = '/xml/examples/shakespeare/macbeth.xml'
 
-response = http.request(request)
+  attr_reader :request, :uri
 
-response.code
+  def initialize
+    @request
+  end
+
+  uri = URI.parse(DOMAIN)
+  http = Net::HTTP.new(uri.host, uri.port)
+
+  def get_play(PATH_TO_RESOURCE)
+    request = Net::HTTP::Get.new(PATH_TO_RESOURCE)
+  end
+
+  response = http.request(request)
+
+  response.code
+
+end
 
 
